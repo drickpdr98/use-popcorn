@@ -2,7 +2,11 @@ import { useState } from "react";
 
 import List from "./List";
 
-export default function ListBoxSearch({ movies }) {
+export default function ListBoxSearch({
+  movies,
+  onGetMovieId,
+  onCloseMovieId,
+}) {
   const [isOpen1, setIsOpen1] = useState(true);
 
   return (
@@ -13,7 +17,13 @@ export default function ListBoxSearch({ movies }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <List movies={movies} />}
+      {isOpen1 && (
+        <List
+          movies={movies}
+          onGetMovieId={onGetMovieId}
+          onCloseMovieId={onCloseMovieId}
+        />
+      )}
     </div>
   );
 }

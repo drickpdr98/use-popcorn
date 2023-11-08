@@ -1,6 +1,6 @@
-export default function ListItem({ movie }) {
+export default function ListItem({ movie, onGetMovieId, onCloseMovieId }) {
   return (
-    <li>
+    <li onClick={() => onGetMovieId(movie.imdbID)}>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>

@@ -4,9 +4,12 @@ import Input from "./Input";
 import Logo from "./Logo";
 import NumberOfResults from "./NumberOfResults";
 
-export default function Navigation({ movies }) {
-  const [query, setQuery] = useState("");
+export default function Navigation({ movies, query, setQuery }) {
+  // const [query, setQuery] = useState("");
 
+  const getQuery = function (event) {
+    setQuery(() => event.target.value);
+  };
   return (
     <nav className="nav-bar">
       <Logo />
@@ -15,7 +18,7 @@ export default function Navigation({ movies }) {
         type="text"
         placeholder="Search movies..."
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={getQuery}
       />
       <NumberOfResults movies={movies} />
     </nav>
