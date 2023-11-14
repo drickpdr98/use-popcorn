@@ -6,7 +6,7 @@ import MovieDetails from "./MovieDetails";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]); // Initialize with sample data
+  const [watched, setWatched] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState("");
@@ -18,6 +18,10 @@ export default function App() {
 
   const closeMovieIdHandler = function () {
     setSelectedId(null);
+  };
+
+  const handleWatchedMovie = function (movie) {
+    setWatched((watched) => [...watched, movie]);
   };
 
   useEffect(
@@ -43,7 +47,7 @@ export default function App() {
           setMovies(response.Search);
         } catch (error) {
           console.log(error);
-          setError(error.message); // Use error.message to get the error message
+          setError(error.message);
         } finally {
           setLoading(false);
         }
@@ -77,6 +81,7 @@ export default function App() {
           <MovieDetails
             selectedId={selectedId}
             onCloseMovieId={closeMovieIdHandler}
+            onAddWatched={handleWatchedMovie}
           />
         ) : (
           <ListBoxWatched watched={watched} />

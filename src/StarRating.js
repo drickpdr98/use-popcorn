@@ -5,7 +5,11 @@ const containerStyle = { display: "flex", alignItems: "center", gap: "16px" };
 
 const starContainerStyle = { display: "flex", gap: "4px" };
 
-export default function StarRating({ color = "#fcc419", size = 48 }) {
+export default function StarRating({
+  color = "#fcc419",
+  size = 48,
+  onSetRating,
+}) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
 
@@ -19,7 +23,7 @@ export default function StarRating({ color = "#fcc419", size = 48 }) {
   return (
     <div style={containerStyle}>
       <div style={starContainerStyle}>
-        {Array.from({ length: 5 }, (_, i) => (
+        {Array.from({ length: rating }, (_, i) => (
           <Star
             key={i + 1}
             onClick={() => setRating(i + 1)}

@@ -5,7 +5,7 @@ import List from "./List";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-export default function ListBoxWatched({ watched }) {
+export default function ListBoxWatched({ watched, handleWatchedMovie }) {
   const [isOpen2, setIsOpen2] = useState(true);
 
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
